@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import ConnexionForm
+from django.contrib import messages
+from .forms import LoginForm
 
-def connexion(request):
+def login_view(request):
     if request.method == 'POST':
-        form = ConnexionForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('page_accueil')  # Redirection après connexion
+                return redirect('home')  # Redirigez vers la page d'accueil ou une autre URL
             else:
-                form.add_error(None, "Nom d'utilisateur ou mot de passe incorrect")
+                messages.error(request, "Nom d’utilisateur ou mot de passe incorrect.")
     else:
-        form = ConnexionForm()
+        form = LoginForm()
     
-    return render(request, 'authentification/connexion.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
+

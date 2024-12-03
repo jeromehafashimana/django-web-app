@@ -1,10 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 
-class InscriptionForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+class ConnexionForm(forms.Form):
+    username = forms.CharField(label="Nom d'utilisateur", max_length=100)
+    password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
