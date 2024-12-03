@@ -55,20 +55,23 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'fotoblog.urls'
 
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Répertoire global pour les templates
-        'APP_DIRS': True,  # Permet de chercher dans chaque application
+        'DIRS': [],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                # Conserve les context processors par défaut
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+
 
 
 WSGI_APPLICATION = 'fotoblog.wsgi.application'
