@@ -1,6 +1,7 @@
+from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('accounts/', include('accounts.urls')),  # Inclure les URLs de l'application utilisateurs
+    path('admin/', admin.site.urls),
+    path('', include('authentification.urls')),  # Inclure les routes de 'myapp'
 ]
-

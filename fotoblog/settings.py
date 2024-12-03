@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-=*6g(n!7qp_h^(sj(*58np1#+n!jjw02^d+=*-2bx3p=ia_%gc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -54,21 +55,21 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'fotoblog.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # Répertoire global pour les templates
+        'APP_DIRS': True,  # Permet de chercher dans chaque application
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                # Conserve les context processors par défaut
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'fotoblog.wsgi.application'
 
