@@ -1,9 +1,6 @@
-from django.contrib import admin
-from django.urls import path
-from django-web-app.views import home  # Remplacez `your_app_name` par le nom de votre application
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('accounts/', include('accounts.urls')),  # Inclure les URLs de l'application utilisateurs
 ]
 
